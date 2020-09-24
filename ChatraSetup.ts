@@ -3,7 +3,7 @@ import {Language} from './Language';
 import {Locale} from './Locale';
 import {Colors} from './Colors';
 
-export interface ChatraSetup {
+interface ChatraSetupBase {
     /** Chat button style. Overrides the style set in widget settings. */
     buttonStyle?: 'tab' | 'round';
 
@@ -43,16 +43,6 @@ export interface ChatraSetup {
      *  Change the ones you don’t like or all of them to translate the widget to an unsupported language. */
     locale?: Locale;
 
-    /** Chatra display mode (default widget or Chatra is embedded into the block specified in injectTo). */
-    mode?: 'widget' | 'frame';
-    // todo chain 'frame' with injectTo?
-
-    /** Specifies the element Chatra will be embedded into when launched in frame mode */
-    injectTo?: string | HTMLElement | HTMLCollectionOf<HTMLElement> | NodeListOf<HTMLElement>;
-    // todo chain 'frame' with injectTo?
-    // todo how it work with HTMLCollectionOf<Element> or NodeListOf<Element>?
-    // todo jQuery collections?
-
     /** Unique secret (not available for other users) string. Binds the chat to a signed in user. */
     clientId?: string;
 
@@ -89,3 +79,35 @@ export interface ChatraSetup {
      *  it may conflict with some single-page applications. */
     disableChatOpenHash?: boolean;
 }
+
+interface ChatraSetupNoMode {
+    /** Chatra display mode (default widget or Chatra is embedded into the block specified in injectTo). */
+    mode?: never;
+    /** Specifies the element Chatra will be embedded into when launched in frame mode */
+    injectTo?: never;
+}
+
+interface ChatraSetupModeWidget {
+    /** Chatra display mode (default widget or Chatra is embedded into the block specified in injectTo). */
+    mode: 'widget';
+    /** Specifies the element Chatra will be embedded into when launched in frame mode */
+    injectTo?: never;
+}
+
+interface ChatraSetupModeFrame {
+    /** Chatra display mode (default widget or Chatra is embedded into the block specified in injectTo). */
+    mode: 'frame';
+    /** Specifies the element Chatra will be embedded into when launched in frame mode */
+    injectTo: string | HTMLElement | HTMLCollectionOf<HTMLElement> | NodeListOf<HTMLElement>;
+    // todo how it work with HTMLCollectionOf<Element> or NodeListOf<Element>?
+    // todo jQuery collections?
+}
+
+type ChatraSetupMode =
+    | ChatraSetupNoMode
+    | ChatraSetupModeWidget
+    | ChatraSetupModeFrame
+
+export type ChatraSetup =
+    & ChatraSetupBase
+    & ChatraSetupMode
