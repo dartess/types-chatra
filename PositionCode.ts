@@ -1,0 +1,10 @@
+export type PositionCode =
+    | 'bl'
+    | 'bc'
+    | 'br'
+    | 'lt'
+    | 'lm'
+    | 'lb'
+    | 'rt'
+    | 'rm'
+    | 'rb'
