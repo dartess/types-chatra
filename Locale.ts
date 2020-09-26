@@ -60,7 +60,6 @@ export interface Locale {
     change?: LocaleItem;
     cancel?: LocaleItem;
     messageTypes?: {
-        welcome?: 'welcome'; // todo wtf
         joinedFirst?: LocaleItem;
         joined?: LocaleItem;
         left?: LocaleItem;
@@ -92,7 +91,6 @@ export interface Locale {
         };
     };
     status?: {
-        waiting?: '{{$connecting}}'; // todo wtf
         connecting?: LocaleItem;
         failed?: LocaleItem;
         offline?: LocaleItem;
