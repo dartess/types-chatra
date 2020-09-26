@@ -1,0 +1,12 @@
+export type AnalyticEvent =
+    | 'Chat initiated by visitor'
+    | 'Chat initiated by agent'
+    | 'Chat accepted by agent'
+    | 'Targeted chat shown'
+    | 'Targeted chat accepted by visitor'
+    | 'Targeted chat rejected by visitor'
+    | 'Pre-chat form shown'
+    | 'Pre-chat form submitted'
+    | 'Bot scenario shown'
+    | 'Bot scenario started by visitor'
+    | 'Bot reply option clicked'

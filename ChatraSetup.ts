@@ -2,6 +2,7 @@ import {PositionCode} from './PositionCode';
 import {Language} from './Language';
 import {Locale} from './Locale';
 import {Colors} from './Colors';
+import {AnalyticEvent} from './AnalyticEvent';
 
 interface ChatraSetupBase {
     /** Chat button style. Overrides the style set in widget settings. */
@@ -68,8 +69,7 @@ interface ChatraSetupBase {
     disableYaTracking?: boolean;
 
     /** A callback function that is called every time one of an analytic events happens. */
-    onAnalyticEvent?: Function;
-    // todo more detail
+    onAnalyticEvent?: (event: AnalyticEvent) => void;
 
     /** If set to true, the widget starts loading only after all other page resources have completed loading. */
     deferredLoading?: boolean;
