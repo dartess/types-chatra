@@ -97,9 +97,7 @@ interface ChatraSetupModeFrame {
     /** Chatra display mode (default widget or Chatra is embedded into the block specified in injectTo). */
     mode: 'frame';
     /** Specifies the element Chatra will be embedded into when launched in frame mode */
-    injectTo: string | HTMLElement | HTMLCollectionOf<HTMLElement> | NodeListOf<HTMLElement>;
-    // todo how it work with HTMLCollectionOf<Element> or NodeListOf<Element>?
-    // todo jQuery collections?
+    injectTo: string | HTMLElement | HTMLCollectionOf<HTMLElement> | NodeListOf<HTMLElement> | JQuery<HTMLElement>;
 }
 
 type ChatraSetupMode =

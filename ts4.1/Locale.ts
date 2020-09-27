@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import {Language} from '../Language';
 
 type LocaleItem<T extends string = string> = {
