@@ -15,19 +15,15 @@ export interface ChatraMethods<TLocale> {
 
     /** Sets the size of the round chat button in px. */
     (action: 'setButtonSize', size: number): void
-    // todo can i don't set size for default?
 
     /** Sets the width of the chat widget in px. */
     (action: 'setChatWidth', width: number): void
-    // todo can i don't set width for default?
 
     /** Sets the height of the chat widget in px. */
     (action: 'setChatHeight', height: number): void
-    // todo can i don't set height for default?
 
     /** Sets chat widget’s z-index value.  */
     (action: 'setZIndex', zIndex: number): void
-    // todo can i don't set zIndex for default?
 
     /** Sets the color scheme of the widget. */
     (action: 'setColors', colors: Colors): void
