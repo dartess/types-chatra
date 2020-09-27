@@ -1,9 +1,8 @@
 import {PositionCode} from './PositionCode';
 import {Colors} from './Colors';
-import {ChatraIntegrationDataValue} from "./ChatraIntegrationDataValue";
-import {Locale} from "./Locale";
+import {ChatraIntegrationDataValue} from './ChatraIntegrationDataValue';
 
-export interface ChatraMethods {
+export interface ChatraMethods<TLocale> {
     /** Sends an automatic message on behalf of a random agent. Works in the same way as automatic targeted
      *  messages, but you can create your own custom logic and have more control over what and when is sent. */
     (action: 'sendAutoMessage', text: string): void
@@ -64,7 +63,7 @@ export interface ChatraMethods {
     (action: 'updateIntegrationData', data: Record<string, ChatraIntegrationDataValue | null>): void
 
     /** Allows to change any number of the default locale strings. */
-    (action: 'setLocale', localeModifier: Locale): void
+    (action: 'setLocale', localeModifier: TLocale): void
 
     /** Sets agent group ID. Chats started with specified group ID will be assigned to this group. */
     (action: 'setGroupId', groupId: string): void

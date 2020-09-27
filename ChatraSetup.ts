@@ -1,10 +1,9 @@
 import {PositionCode} from './PositionCode';
 import {Language} from './Language';
-import {Locale} from './Locale';
 import {Colors} from './Colors';
 import {AnalyticEvent} from './AnalyticEvent';
 
-interface ChatraSetupBase {
+interface ChatraSetupBase<TLocale> {
     /** Chat button style. Overrides the style set in widget settings. */
     buttonStyle?: 'tab' | 'round';
 
@@ -42,7 +41,7 @@ interface ChatraSetupBase {
 
     /** Allows to change any number of the default locale strings.
      *  Change the ones you don’t like or all of them to translate the widget to an unsupported language. */
-    locale?: Locale;
+    locale?: TLocale;
 
     /** Unique secret (not available for other users) string. Binds the chat to a signed in user. */
     clientId?: string;
@@ -108,6 +107,6 @@ type ChatraSetupMode =
     | ChatraSetupModeWidget
     | ChatraSetupModeFrame
 
-export type ChatraSetup =
-    & ChatraSetupBase
+export type ChatraSetup<TLocale> =
+    & ChatraSetupBase<TLocale>
     & ChatraSetupMode

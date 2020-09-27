@@ -1,8 +1,10 @@
-import {Language} from './Language';
+import {Language} from '../Language';
 
-type LocaleItem = {
-    [language in Language]?: string;
+type LocaleItem<T extends string = string> = {
+    [language in Language]?: T;
 }
+
+// todo try typing values with placeholders for TS4.1; also monts and another strong types
 
 /**
  * https://chat.chatra.io/locale.json
@@ -17,10 +19,10 @@ export interface Locale {
         offlineNote?: LocaleItem;
         bot_thanksForMessage?: LocaleItem;
         bot_startOnline?: LocaleItem;
-        bot_startOnline_email?: LocaleItem;
+        bot_startOnline_email?: LocaleItem<`${string}{{#email}}${string}`>;
         bot_startOnline_required?: LocaleItem;
         bot_startOffline?: LocaleItem;
-        bot_startOffline_email?: LocaleItem;
+        bot_startOffline_email?: LocaleItem<`${string}{{#email}}${string}`>;
         bot_startOffline_required?: LocaleItem;
         bot_beforeForm?: LocaleItem;
         bot_afterForm?: LocaleItem;
@@ -41,7 +43,7 @@ export interface Locale {
             reply?: LocaleItem;
         };
         send?: LocaleItem;
-        messagesCount?: LocaleItem;
+        messagesCount?: LocaleItem<`${string}{{#count}}${string}{{plural:#count,${string}}}`>;
         noMessages?: LocaleItem;
         newMessage?: LocaleItem;
         retrievingHistory?: LocaleItem;
@@ -62,8 +64,8 @@ export interface Locale {
     cancel?: LocaleItem;
     messageTypes?: {
         joinedFirst?: LocaleItem;
-        joined?: LocaleItem;
-        left?: LocaleItem;
+        joined?: LocaleItem<`${string}{{#username}}${string}`>;
+        left?: LocaleItem<`${string}{{#username}}${string}`>;
         agentsOffline?: LocaleItem;
         ratedChat?: LocaleItem;
     };
@@ -73,22 +75,22 @@ export interface Locale {
     minimize?: LocaleItem;
     date?: {
         month?: {
-            full?: LocaleItem;
-            short?: LocaleItem;
+            full?: LocaleItem<`${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}`>;
+            short?: LocaleItem<`${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}`>;
         };
-        am?: LocaleItem;
+        am?: 'AM_PM'; // todo what else could it be?
         moment?: LocaleItem;
-        minute?: LocaleItem;
-        hour?: LocaleItem;
-        day?: LocaleItem;
+        minute?: LocaleItem<`${string}{{#count}}${string}{{plural:#count,${string}}}`>;
+        hour?: LocaleItem<`${string}{{#count}}${string}{{plural:#count,${string}}}`>;
+        day?: LocaleItem<`${string}{{#count}}${string}{{plural:#count,${string}}}`>;
         today?: LocaleItem;
         yesterday?: LocaleItem;
         format?: {
-            date?: LocaleItem;
-            dateWithYear?: LocaleItem;
-            when?: LocaleItem;
-            whenWithYear?: LocaleItem;
-            time?: LocaleItem;
+            date?: LocaleItem<`${string}MMMM${string}D${string}` | `${string}D${string}MMMM${string}`>;
+            dateWithYear?: LocaleItem<`${string}D${string}MMMM${string}YYYY${string}` | `${string}MMMM${string}D${string}YYYY${string}` | `${string}YYYY${string}MMMM${string}D${string}` | `${string}YYYY${string}D${string}MMMM${string}`>;
+            when?: LocaleItem<`${string}MMM${string}D${string}` | `${string}D${string}MMM${string}`>;
+            whenWithYear?: LocaleItem<`${string}D${string}MMM${string}YYYY${string}` | `${string}MMM${string}D${string}YYYY${string}` | `${string}YYYY${string}MMM${string}D${string}` | `${string}YYYY${string}D${string}MMM${string}`>;
+            time?: LocaleItem<`${string}HH${string}mm${string}` | `${string}h${string}mm${string}A${string}` | `${string}A${string}h${string}mm${string}`>;
         };
     };
     status?: {
@@ -129,7 +131,7 @@ export interface Locale {
     dropToUpload?: LocaleItem;
     uploadFile?: LocaleItem;
     uploadFailed?: LocaleItem;
-    maximumFileSize?: LocaleItem;
+    maximumFileSize?: LocaleItem<`${string}{{#size}}${string}`>;
     comment?: LocaleItem;
     rateConversation?: LocaleItem;
     rate?: LocaleItem;

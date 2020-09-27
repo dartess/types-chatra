@@ -1,6 +1,6 @@
-import {ChatraSetup} from './ChatraSetup';
-import {ChatraMethods} from './ChatraMethods';
-import {ChatraIntegrationDataValue} from './ChatraIntegrationDataValue';
+import {ChatraSetup} from '../ChatraSetup';
+import {ChatraMethods} from '../ChatraMethods';
+import {ChatraIntegrationDataValue} from '../ChatraIntegrationDataValue';
 import {Locale} from './Locale';
 
 declare global {
@@ -15,3 +15,4 @@ declare global {
         ChatraIntegration?: Record<string, ChatraIntegrationDataValue>;
     }
 }
+
