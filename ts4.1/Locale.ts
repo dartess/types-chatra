@@ -2,11 +2,9 @@
 
 import {Language} from '../Language';
 
-type LocaleItem<T extends string = string> = {
+type LocaleItem<T extends string = string> = T | {
     [language in Language]?: T;
 }
-
-// todo try typing values with placeholders for TS4.1; also monts and another strong types
 
 /**
  * https://chat.chatra.io/locale.json
@@ -80,7 +78,7 @@ export interface Locale {
             full?: LocaleItem<`${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}`>;
             short?: LocaleItem<`${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}_${string}`>;
         };
-        am?: 'AM_PM'; // todo what else could it be?
+        am?: LocaleItem<'AM_PM'>;
         moment?: LocaleItem;
         minute?: LocaleItem<`${string}{{#count}}${string}{{plural:#count,${string}}}`>;
         hour?: LocaleItem<`${string}{{#count}}${string}{{plural:#count,${string}}}`>;

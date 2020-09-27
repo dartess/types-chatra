@@ -1,6 +1,6 @@
 import {Language} from './Language';
 
-type LocaleItem = {
+type LocaleItem = string | {
     [language in Language]?: string;
 }
 
@@ -76,7 +76,7 @@ export interface Locale {
             full?: LocaleItem;
             short?: LocaleItem;
         };
-        am?: LocaleItem;
+        am?: LocaleItem; // todo what else could it be?
         moment?: LocaleItem;
         minute?: LocaleItem;
         hour?: LocaleItem;

@@ -30,14 +30,12 @@ interface ChatraSetupBase<TLocale> {
 
     /** If set to true the widget will show up only on mobile devices. */
     mobileOnly?: boolean;
-    // todo chain with disabledOnMobile?
 
     /** If set to true the widget won’t show up on mobile devices. */
     disabledOnMobile?: boolean;
 
     /** Widget language. */
     language?: Language;
-    // todo check set unsupported locale (expand Locale?)
 
     /** Allows to change any number of the default locale strings.
      *  Change the ones you don’t like or all of them to translate the widget to an unsupported language. */
