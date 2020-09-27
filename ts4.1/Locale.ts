@@ -142,9 +142,4 @@ export interface Locale {
     whoToChatWith?: LocaleItem;
     notSure?: LocaleItem;
     restart?: LocaleItem;
-    _chatra?: { // todo check can i change it?
-        logo?: 'Chatra';
-        phrase?: LocaleItem;
-        chatra?: LocaleItem;
-    };
 }
